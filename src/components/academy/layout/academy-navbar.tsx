@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { academy, academyNav } from "@/lib/academy";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -73,7 +73,14 @@ export function AcademyNavbar() {
           ))}
         </ul>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-2 lg:flex">
+          <Button
+            variant="outline"
+            render={<Link href="/" />}
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Lumoshive.com
+          </Button>
           <Button
             className="bg-accent text-accent-foreground hover:bg-accent/90"
             render={
@@ -128,7 +135,18 @@ export function AcademyNavbar() {
                 </li>
               ))}
             </ul>
-            <div className="mt-4 px-4">
+            <div className="mt-4 flex flex-col gap-2 px-4">
+              <SheetClose
+                render={
+                  <Link
+                    href="/"
+                    className={cn(buttonVariants({ variant: "outline" }), "w-full")}
+                  />
+                }
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Kembali ke Lumoshive.com
+              </SheetClose>
               <SheetClose
                 render={
                   <Link
