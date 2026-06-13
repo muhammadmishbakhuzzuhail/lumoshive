@@ -8,11 +8,10 @@ import { Button } from "@/components/ui/button";
 export function Hero() {
   return (
     <section className="relative flex min-h-[92vh] items-center overflow-hidden">
-      {/* Video background */}
-      {/* The teaser has baked-in text/graphics; blur + scale turns it into an
-          ambient backdrop so it doesn't compete with the hero copy. */}
+      {/* Video background — light blur softens the teaser's baked-in text
+          without turning the footage murky. */}
       <video
-        className="absolute inset-0 h-full w-full scale-110 object-cover blur-[3px] brightness-[0.5]"
+        className="absolute inset-0 h-full w-full scale-105 object-cover blur-[1.5px] brightness-90"
         autoPlay
         muted
         loop
@@ -24,9 +23,11 @@ export function Hero() {
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlays — kept dark/opaque so foreground copy stays legible */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-primary/80" />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-primary/70" />
+      {/* Directional scrim: opaque on the left (under the copy) → transparent on
+          the right so the video breathes and its own text doesn't clash. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary/20" />
+      {/* Gentle top/bottom vignette to anchor the section. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-primary/60" />
 
       <div className="container-px relative mx-auto max-w-7xl py-32">
         <div className="max-w-3xl">
