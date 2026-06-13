@@ -28,7 +28,7 @@ export default function AboutPage() {
                 alt="Lumoshive"
                 width={720}
                 height={520}
-                className="relative rounded-2xl border border-border/60 object-cover shadow-xl"
+                className="relative aspect-[4/3] w-full rounded-2xl border border-border/60 object-cover shadow-xl"
               />
             </div>
           </Reveal>

@@ -1,9 +1,10 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import { Check } from "lucide-react";
 import { PageHero } from "@/components/common/page-hero";
 import { SectionHeading } from "@/components/common/section-heading";
 import { Card } from "@/components/ui/card";
-import { Reveal, Stagger, StaggerItem } from "@/components/common/reveal";
+import { Stagger, StaggerItem } from "@/components/common/reveal";
 import { ProjectsGrid } from "@/components/marketing/sections/projects-grid";
 import { clients, analysisTools } from "@/data/marketing/projects";
 
@@ -61,15 +62,15 @@ export default function ProjectsPage() {
             title="Tools we use for analysis & testing"
             description="We rely on industry-standard tooling to keep every delivery secure and high quality."
           />
-          <Stagger className="mt-14 grid gap-6 lg:grid-cols-3">
+          <Stagger className="mt-14 grid gap-6 sm:grid-cols-2">
             {analysisTools.map((tool) => (
               <StaggerItem key={tool.name} className="h-full">
                 <Card className="flex h-full flex-col gap-4 border-border/70 p-7">
-                  <div className="flex h-16 items-center">
+                  <div className="flex h-14 items-center">
                     <Image
                       src={tool.image}
                       alt={tool.name}
-                      width={120}
+                      width={140}
                       height={48}
                       className="h-10 w-auto object-contain"
                     />
@@ -80,13 +81,18 @@ export default function ProjectsPage() {
                   <p className="text-sm leading-relaxed text-muted-foreground">
                     {tool.description}
                   </p>
+                  <ul className="mt-auto grid grid-cols-1 gap-2 border-t border-border/60 pt-4 sm:grid-cols-2">
+                    {tool.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-xs">
+                        <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                        <span className="text-muted-foreground">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </Card>
               </StaggerItem>
             ))}
           </Stagger>
-          <Reveal className="mt-10 text-center text-sm text-muted-foreground">
-            …and many more across our DevSecOps practice.
-          </Reveal>
         </div>
       </section>
     </>
