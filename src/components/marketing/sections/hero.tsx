@@ -9,8 +9,10 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[92vh] items-center overflow-hidden">
       {/* Video background */}
+      {/* The teaser has baked-in text/graphics; blur + scale turns it into an
+          ambient backdrop so it doesn't compete with the hero copy. */}
       <video
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full scale-110 object-cover blur-[3px] brightness-[0.5]"
         autoPlay
         muted
         loop
@@ -22,9 +24,9 @@ export function Hero() {
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-primary/60" />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-transparent to-primary/40" />
+      {/* Overlays — kept dark/opaque so foreground copy stays legible */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-primary/80" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-primary/70" />
 
       <div className="container-px relative mx-auto max-w-7xl py-32">
         <div className="max-w-3xl">
